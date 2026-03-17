@@ -8,6 +8,38 @@
 - link:
     ~/.bob: bob
 
+- link:
+   ~/.oh-my-zsh/custom/000-env.zsh: ohmyzsh/custom/000-env.zsh
+   ~/.oh-my-zsh/custom/002-app.zsh: ohmyzsh/custom/002-app.zsh
+  #  ~/.oh-my-zsh/custom/007-env-bat.zsh.bak: ohmyzsh/custom/007-env-bat.zsh.bak
+   ~/.oh-my-zsh/custom/007-env-eza.zsh: ohmyzsh/custom/007-env-eza.zsh
+   ~/.oh-my-zsh/custom/010-java.zsh: ohmyzsh/custom/010-java.zsh
+   ~/.oh-my-zsh/custom/050-aliases.zsh: ohmyzsh/custom/050-aliases.zsh
+   ~/.oh-my-zsh/custom/051-aliases-ls.zsh: ohmyzsh/custom/051-aliases-ls.zsh
+   ~/.oh-my-zsh/custom/051-aliases-php.zsh: ohmyzsh/custom/051-aliases-php.zsh
+   ~/.oh-my-zsh/custom/051-aliases-suffix.zsh: ohmyzsh/custom/051-aliases-suffix.zsh
+   ~/.oh-my-zsh/custom/054-aliases-git.zsh: ohmyzsh/custom/054-aliases-git.zsh
+   ~/.oh-my-zsh/custom/060-cmd.zsh: ohmyzsh/custom/060-cmd.zsh
+   ~/.oh-my-zsh/custom/061-cmd-atuin.zsh: ohmyzsh/custom/061-cmd-atuin.zsh
+   ~/.oh-my-zsh/custom/061-cmd-boring.zsh: ohmyzsh/custom/061-cmd-boring.zsh
+   ~/.oh-my-zsh/custom/061-cmd-broot.zsh: ohmyzsh/custom/061-cmd-broot.zsh
+   ~/.oh-my-zsh/custom/061-cmd-folderify.zsh: ohmyzsh/custom/061-cmd-folderify.zsh
+   ~/.oh-my-zsh/custom/061-cmd-forgit.zsh: ohmyzsh/custom/061-cmd-forgit.zsh
+   ~/.oh-my-zsh/custom/061-cmd-hurl.zsh: ohmyzsh/custom/061-cmd-hurl.zsh
+   ~/.oh-my-zsh/custom/061-cmd-iterm.zsh: ohmyzsh/custom/061-cmd-iterm.zsh
+   ~/.oh-my-zsh/custom/061-cmd-lla.zsh: ohmyzsh/custom/061-cmd-lla.zsh
+   ~/.oh-my-zsh/custom/061-cmd-navi.zsh: ohmyzsh/custom/061-cmd-navi.zsh
+   ~/.oh-my-zsh/custom/061-cmd-sqlite3.zsh: ohmyzsh/custom/061-cmd-sqlite3.zsh
+   ~/.oh-my-zsh/custom/061-cmd-todo.zsh: ohmyzsh/custom/061-cmd-todo.zsh
+   ~/.oh-my-zsh/custom/061-cmd-x-cmd.zsh: ohmyzsh/custom/061-cmd-x-cmd.zsh
+   ~/.oh-my-zsh/custom/090-includes.zsh: ohmyzsh/custom/090-includes.zsh
+   ~/.oh-my-zsh/custom/500-colours.zsh: ohmyzsh/custom/500-colours.zsh
+  #  ~/.oh-my-zsh/custom/500-lib-colours.zsh.bak: ohmyzsh/custom/500-lib-colours.zsh.bak
+   ~/.oh-my-zsh/custom/900-functions.zsh: ohmyzsh/custom/900-functions.zsh
+   ~/.oh-my-zsh/custom/910-completions.zsh: ohmyzsh/custom/910-completions.zsh
+   ~/.oh-my-zsh/custom/920-keybindings.zsh: ohmyzsh/custom/920-keybindings.zsh
+  #  ~/.oh-my-zsh/custom/gh-kycdd.zsh.bak : ohmyzsh/custom/gh-kycdd.zsh.bak
+
 - create:
     - ~/doc
     - ~/etc
