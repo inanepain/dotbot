@@ -1,13 +1,16 @@
 - defaults:
     link:
       create: true
-      relink: true
-
+      relink: 
+          
+- link:
+    ~/.zshenv: zshenv
+              
 - link:
     ~/bin/functions/ask: bin/functions/ask
     ~/bin/functions/colours: bin/functions/colours
     ~/bin/functions/eg: bin/functions/eg
-    ~/bin/functions/inane-x: bin/functions/inane
+    ~/bin/functions/inane-x: bin/functions/inane-x
     ~/bin/functions/swap_files: bin/functions/swap_files
     ~/bin/functions/take: bin/functions/take
     ~/bin/functions/which2: bin/functions/which2

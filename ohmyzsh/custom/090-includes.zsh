@@ -3,7 +3,7 @@ INANE_plugins=(aliases copypath copyfile cp dash)
 source /Users/philip/.oh-my-zsh/lib/clipboard.zsh
 
 # Alias reminder
-# source /opt/homebrew/Cellar/zsh-you-should-use/1.11.0/share/zsh-you-should-use/you-should-use.plugin.zsh
+# source "$(brew --prefix)/Cellar/zsh-you-should-use/1.11.0/share/zsh-you-should-use/you-should-use.plugin.zsh"
 source /opt/homebrew/share/zsh-you-should-use/you-should-use.plugin.zsh
 
 # Alias finder
