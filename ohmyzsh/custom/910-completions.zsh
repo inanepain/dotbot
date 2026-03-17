@@ -5,4 +5,4 @@
 
 compctl -/g 'queues/*.txt' gallery-tool.sh
 test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
-source "/opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
+source "$(brew --prefix)/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
