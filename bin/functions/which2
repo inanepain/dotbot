@@ -1,0 +1,9 @@
+## which2
+# find all instancas of program
+# VERSION   : 1
+# DATE      : 2025 Jul 15
+
+# e.g.: where2 php
+# where2
+
+which -a "$1" | uniq

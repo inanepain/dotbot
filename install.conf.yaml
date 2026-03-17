@@ -3,10 +3,14 @@
       create: true
       relink: true
 
-- clean: ['~']
-
 - link:
-    ~/.bob: bob
+    ~/bin/functions/ask: bin/functions/ask
+    ~/bin/functions/colours: bin/functions/colours
+    ~/bin/functions/eg: bin/functions/eg
+    ~/bin/functions/inane-x: bin/functions/inane
+    ~/bin/functions/swap_files: bin/functions/swap_files
+    ~/bin/functions/take: bin/functions/take
+    ~/bin/functions/which2: bin/functions/which2
 
 - link:
    ~/.oh-my-zsh/custom/000-env.zsh: ohmyzsh/custom/000-env.zsh
@@ -41,6 +45,9 @@
   #  ~/.oh-my-zsh/custom/gh-kycdd.zsh.bak : ohmyzsh/custom/gh-kycdd.zsh.bak
 
 - create:
+    - ~/bin
+    - ~/bin/functions
     - ~/doc
     - ~/etc
-    
+
+- clean: ['~', '~/bin/functions', '~/.oh-my-zsh/custom']

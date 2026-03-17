@@ -1,0 +1,113 @@
+#!/opt/homebrew/bin/zsh
+
+if [[ ${#argv} -eq 0 ]]; then
+	cmd=help
+else
+	cmd=$1
+fi
+
+if [[ ${#argv} > 1 ]]; then
+	shift 
+	opts=("$argv[@]")
+else
+	opts=('')
+fi
+
+autoload ask
+source /Users/philip/.oh-my-zsh/custom/500-colours.zsh
+
+local VERSION=1
+local thisScript=`basename $0`
+
+
+# Config Options
+local CFG_OPTIONS=(
+	optShowHelpOnError
+	optShowMissingFunctionError
+#	optShowCheckOption
+#	optStartup
+#	optNotifyInvalidParseURL
+#	optPauseAfterBatchMove
+#	optSummaryAfterProcessQueue
+#	optPauseAfterParseURL
+#	optAutoUpdateCache
+#	optPauseAfterQueueClean
+#	optCleanRemoteTemp
+#	optListDeleteAskTo
+#	optListGlobalDelete
+#	optListDownloadsDelete
+);
+
+local this=$Purple$thisScript$NC
+local ver=$Blue$VERSION$NC
+
+# show name and version info
+function showVersion() {
+	msg "$this (v$ver)"
+}
+
+# show help with optional error
+function showHelp() {
+	showVersion
+	msg "${White}usage$NC: $Blue$this ${Green}command ${Cyan}[...arguments]"
+	
+	# optional error message
+	[[ ! $1 == "" ]] && msg "\tError: $1\n"
+	
+	msg "${IYellow}COMMANDS"
+	msg "  - ${Blue}reload\t${DGreen}reload current shell."
+	msg "  - ${Blue}help\t${DGreen}show this help message."
+}
+
+# Check if config option is enabled
+# usage: checkCfgOption [optToTest]
+function checkCfgOption {
+	local cfgOption=$1
+	(( ${CFG_OPTIONS[(i)optShowCheckOption]} <= ${#CFG_OPTIONS[@]} )) && msg "\t\t${Blue}Options$NC:\t$Red$cfgOption"
+	(( ${CFG_OPTIONS[(i)$cfgOption]} <= ${#CFG_OPTIONS[@]} )) && return 0 || return 1;
+}
+
+function checkFunction() {
+	local cmd="$1"
+	local showHelpScreen=
+	local verbose=
+	checkCfgOption optShowHelpOnError && showHelpScreen=true || showHelpScreen=false
+	checkCfgOption optShowMissingFunctionError && verbose=true || verbose=false
+	if (( $+functions[$cmd] )); then
+		return 0
+	else
+		if $showHelpScreen = true; then
+			showHelp "Function: $Blue'$cmd'$NC ${Red}not defined"
+		elif $verbose = true; then
+			msg "Function: $Blue'$cmd'$NC ${Red}not defined"
+		fi
+		return 1
+	fi
+}
+
+function callFunction() {
+	local cmd="$1"
+	if checkFunction "$cmd"; then
+		$*
+		return 0
+	else
+		msg "Function: $Blue\"$1\"$NC ${Red}not defined"
+		return 1
+	fi
+}
+
+function help() {
+	showHelp
+}
+
+function reload() {
+	# Delete current completion cache
+	command rm -f $_comp_dumpfile $ZSH_COMPDUMP
+	
+	# Old zsh versions don't have ZSH_ARGZERO
+	local zsh="${ZSH_ARGZERO:-${functrace[-1]%:*}}"
+	# Check whether to run a login shell
+	[[ "$zsh" = -* || -o login ]] && exec -l "${zsh#-}" || exec "$zsh"
+}
+
+callFunction "$cmd" $opts

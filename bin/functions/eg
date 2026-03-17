@@ -1,0 +1,74 @@
+## eg
+# run cheat and tldr if installed
+# VERSION   : 4
+# DATE      : 2023 Apr 17
+local VERSION=4
+
+# e.g.: get help for cheat command 
+# eg cheat
+
+## HISTORY
+# 4: 2023 Apr 17
+# - fix: non local variables: VERSION, DAYS
+# - a few minor ui tweaks
+#
+# 3: 2021 Oct 15
+# - added tldr cache age and reset limit to header
+# - switch to `fileage` to get cache age
+#
+# 2: 2021 Oct 08
+# - added tldr update
+
+local RESETLIMIT=10
+
+local path_conf=~/.config/eg
+local cfg_tldr="$path_conf/updtldr"
+
+## CODE: COMMON
+##########################################################
+
+# echo "$0 (v$VERSION)"
+
+[[ ! -d $path_conf ]] && mkdir $path_conf
+
+## CODE: CUSTOM
+##########################################################
+
+[[ ! -f $cfg_tldr ]] && touch $cfg_tldr
+
+local title_pad title
+
+if [[ -f `which tldr` ]]; then
+    local DAYS=$(fileage $cfg_tldr)
+
+    title=" tldr ($DAYS/$RESETLIMIT): $@ "
+    ((title_pad=(60-${#title})/2))
+    printf '=%.0s' {1..$title_pad}
+    printf $title
+    printf '=%.0s' {1..$title_pad}; printf '\n'
+
+    if [[ ! $DAYS -lt $RESETLIMIT ]]; then
+        printf "tldr: updating... "
+        tldr --update
+        touch $cfg_tldr
+        echo "done"
+    fi
+
+    tldr "$@"
+    echo
+fi
+
+if [[ -f `which cheat` ]]; then
+    title=" cheat: $@ "
+    ((title_pad=(56-${#title})/2))
+
+    printf '=%.0s' {1..$title_pad}; 
+    printf $title
+    printf '=%.0s' {1..$title_pad}; printf ' >>>\n'
+
+    cheat "$@"
+    
+    # printf '<<< '; printf '=%.0s' {1..$title_pad}; 
+    # printf $title
+    # printf '=%.0s' {1..$title_pad}; printf '\n'
+fi
