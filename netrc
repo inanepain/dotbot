@@ -1,0 +1,15 @@
+machine www.inane.co.za
+        login philip
+        password Esoter1c!@
+
+machine www.cathedral.co.za
+	login philip
+	password Esoter1c!@
+
+machine kycdd.co.za
+	login philip
+	password @2Sadira
+
+machine app.kycdd.co.za
+	login philip
+	password @2Sadira

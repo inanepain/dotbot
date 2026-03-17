@@ -6,11 +6,9 @@
 - clean: ['~']
 
 - link:
-    ~/.bob bob
+    ~/.bob: bob
 
 - create:
     - ~/doc
     - ~/etc
-
-# - shell:
-  # - [git pull, Updating submodules]
+    
