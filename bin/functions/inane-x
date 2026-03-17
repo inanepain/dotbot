@@ -14,7 +14,7 @@ else
 fi
 
 autoload ask
-source /Users/philip/.oh-my-zsh/custom/500-colours.zsh
+source ~/bin/functions/colours
 
 local VERSION=1
 local thisScript=`basename $0`
