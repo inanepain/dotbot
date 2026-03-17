@@ -1,0 +1,16 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.bob bob
+
+- create:
+    - ~/doc
+    - ~/etc
+
+# - shell:
+  # - [git pull, Updating submodules]
