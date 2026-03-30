@@ -17,6 +17,25 @@ function add_to_path() {
 	fi
 }
 
+# Clean PATH in-place
+function clean_path() {
+  emulate -L zsh
+  setopt extendedglob
+
+  typeset -a newpath
+  typeset -A seen
+
+  local p
+  for p in ${(s/:/)PATH}; do
+    # skip empty, non-dirs, or already seen
+    [[ -n "$p" && -d "$p" && -z "${seen[$p]}" ]] || continue
+    newpath+="$p"
+    seen[$p]=1
+  done
+
+  PATH="${(j/:/)newpath}"
+}
+
 function hasSoftware() {
 	if which $1 >/dev/null; then
 		return 0
