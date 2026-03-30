@@ -58,10 +58,19 @@
   #  ~/.oh-my-zsh/custom/gh-kycdd.zsh.bak : ohmyzsh/custom/gh-kycdd.zsh.bak
 
 - create:
+    # XDG
+    - ~/.local
+    - ~/.local/share
+    - ~/.local/state
+    - ~/.config
+    - ~/.cache
+    # BIN
     - ~/bin
     - ~/bin/functions
+    # OTHER
     - ~/doc
     - ~/etc
+    # MAN
     - ~/man
     - ~/man/man1
     - ~/man/man2
