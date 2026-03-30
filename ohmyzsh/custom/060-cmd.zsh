@@ -7,7 +7,9 @@
 
 ## moor
 #####################################################################
-export PAGER=/opt/homebrew/bin/moor
+if which moor >/dev/null; then
+    export PAGER=/opt/homebrew/bin/moor
+fi
 
 ## gtrash
 ############

@@ -9,7 +9,7 @@
 #####################################################################
 # alias ls='lsd'
 
-alias gfo='git fetch origin'
+# alias gfo='git fetch origin'
 # alias la='ls -a'
 # alias lla='ls -la'
 # alias lt='ls --tree'

@@ -8,4 +8,6 @@
 ## command
 # sqlite3
 #####################################################################
-alias sqlite3="sqlite3 -unsafe-testing -init ~/lib/sqlite/init.sql"
+if which sqlite3 >/dev/null; then
+    alias sqlite3="sqlite3 -unsafe-testing -init ~/lib/sqlite/init.sql"
+fi
