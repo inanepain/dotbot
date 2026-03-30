@@ -5,6 +5,8 @@
           
 - link:
     ~/.zshenv: zshenv
+    ~/.zlogin: zlogin
+    ~/.zlogout: zlogout
               
 - link:
     ~/bin/functions/ask: bin/functions/ask
@@ -52,5 +54,14 @@
     - ~/bin/functions
     - ~/doc
     - ~/etc
+    - ~/man
+    - ~/man/man1
+    - ~/man/man2
+    - ~/man/man3
+    - ~/man/man4
+    - ~/man/man5
+    - ~/man/man6
+    - ~/man/man7
+    - ~/man/man8
 
 - clean: ['~', '~/bin/functions', '~/.oh-my-zsh/custom']
