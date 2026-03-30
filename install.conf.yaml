@@ -7,6 +7,9 @@
     ~/.zshenv: zshenv
     ~/.zlogin: zlogin
     ~/.zlogout: zlogout
+
+- link:
+    ~/bin/fresh-upgrade.zsh: bin/fresh-upgrade.zsh
               
 - link:
     ~/bin/functions/ask: bin/functions/ask
