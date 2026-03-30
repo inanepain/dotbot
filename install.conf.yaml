@@ -22,9 +22,13 @@
    ~/.oh-my-zsh/custom/002-app.zsh: ohmyzsh/custom/002-app.zsh
   #  ~/.oh-my-zsh/custom/007-env-bat.zsh.bak: ohmyzsh/custom/007-env-bat.zsh.bak
    ~/.oh-my-zsh/custom/007-env-eza.zsh: ohmyzsh/custom/007-env-eza.zsh
-   ~/.oh-my-zsh/custom/010-java.zsh: ohmyzsh/custom/010-java.zsh
+   ~/.oh-my-zsh/custom/010-java.zsh:
+     if: '[ ! `hostname` = kycu ]'
+     path: ohmyzsh/custom/010-java.zsh
    ~/.oh-my-zsh/custom/050-aliases.zsh: ohmyzsh/custom/050-aliases.zsh
-   ~/.oh-my-zsh/custom/051-aliases-ls.zsh: ohmyzsh/custom/051-aliases-ls.zsh
+   ~/.oh-my-zsh/custom/051-aliases-ls.zsh:
+     if: '[ ! `hostname` = kycu ]'
+     path: ohmyzsh/custom/051-aliases-ls.zsh
    ~/.oh-my-zsh/custom/051-aliases-php.zsh: ohmyzsh/custom/051-aliases-php.zsh
    ~/.oh-my-zsh/custom/051-aliases-suffix.zsh: ohmyzsh/custom/051-aliases-suffix.zsh
    ~/.oh-my-zsh/custom/054-aliases-git.zsh: ohmyzsh/custom/054-aliases-git.zsh
