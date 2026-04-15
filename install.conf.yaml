@@ -37,7 +37,7 @@
   #    path: ohmyzsh/custom/051-aliases-ls.zsh
    ~/.oh-my-zsh/custom/051-aliases-php.zsh: ohmyzsh/custom/051-aliases-php.zsh
    ~/.oh-my-zsh/custom/051-aliases-suffix.zsh: ohmyzsh/custom/051-aliases-suffix.zsh
-  #  ~/.oh-my-zsh/custom/054-aliases-git.zsh: ohmyzsh/custom/054-aliases-git.zsh
+   ~/.oh-my-zsh/custom/052-aliases-git.zsh: ohmyzsh/custom/052-aliases-git.zsh
    ~/.oh-my-zsh/custom/060-cmd.zsh: ohmyzsh/custom/060-cmd.zsh
    ~/.oh-my-zsh/custom/061-cmd-atuin.zsh: 
      if: '[ ! `hostname` = kycu  ]'
