@@ -42,7 +42,7 @@
    ~/.oh-my-zsh/custom/061-cmd-boring.zsh: ohmyzsh/custom/061-cmd-boring.zsh
    ~/.oh-my-zsh/custom/061-cmd-broot.zsh: ohmyzsh/custom/061-cmd-broot.zsh
    ~/.oh-my-zsh/custom/061-cmd-folderify.zsh: ohmyzsh/custom/061-cmd-folderify.zsh
-  #  ~/.oh-my-zsh/custom/061-cmd-forgit.zsh: ohmyzsh/custom/061-cmd-forgit.zsh
+   ~/.oh-my-zsh/custom/061-cmd-ghq.zsh: ohmyzsh/custom/061-cmd-ghq.zsh
    ~/.oh-my-zsh/custom/061-cmd-hurl.zsh: ohmyzsh/custom/061-cmd-hurl.zsh
    ~/.oh-my-zsh/custom/061-cmd-iterm.zsh: ohmyzsh/custom/061-cmd-iterm.zsh
    ~/.oh-my-zsh/custom/061-cmd-lla.zsh: ohmyzsh/custom/061-cmd-lla.zsh
@@ -50,6 +50,7 @@
    ~/.oh-my-zsh/custom/061-cmd-sqlite3.zsh: ohmyzsh/custom/061-cmd-sqlite3.zsh
    ~/.oh-my-zsh/custom/061-cmd-todo.zsh: ohmyzsh/custom/061-cmd-todo.zsh
    ~/.oh-my-zsh/custom/061-cmd-x-cmd.zsh: ohmyzsh/custom/061-cmd-x-cmd.zsh
+  #  ~/.oh-my-zsh/custom/061-cmd-forgit.zsh: ohmyzsh/custom/061-cmd-forgit.zsh
   #  ~/.oh-my-zsh/custom/090-includes.zsh:
   #    if: '[ ! `hostname` = kycu  ]'
   #    path: ohmyzsh/custom/090-includes.zsh
