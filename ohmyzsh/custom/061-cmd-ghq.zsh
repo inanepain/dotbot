@@ -7,7 +7,7 @@
 # ghq
 #####################################################################
 if which ghq >/dev/null; then
-	function cdghq() {
+	function ghq-cd() {
 		local repo=$(ghq list | fzf)
 		[ -n "$repo" ] && cd "$(ghq root)/$repo"
 	}
