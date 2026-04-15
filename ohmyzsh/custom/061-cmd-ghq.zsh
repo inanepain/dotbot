@@ -11,4 +11,8 @@ if which ghq >/dev/null; then
 		local repo=$(ghq list | fzf)
 		[ -n "$repo" ] && cd "$(ghq root)/$repo"
 	}
+
+	function ghq-update() {
+		ghq list --full-path | xargs -I{} git -C {} pull --ff-only
+	}
 fi

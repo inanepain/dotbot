@@ -1,0 +1,6 @@
+#########################################
+#				ZSHRC: blackbetty
+#########################################
+if [[ $INANE_SHELL_TYPE -gt 0 ]]; then
+	~/Sites/blackbetty/bin/fortune
+fi

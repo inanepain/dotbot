@@ -50,18 +50,18 @@ setopt autocd extendedglob
 unsetopt nomatch
 bindkey -e
 tabs -4
+setopt beep nomatch
 # End of lines configured by zsh-newuser-install
 # If you come from bash you might have to change your $PATH.
 add_to_path /usr/local/mysql-9.3.0-macos15-arm64/bin "before"
 add_to_path $HOME/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin "before"
 add_to_path $HOME/.composer/vendor/bin "before"
 add_to_path /usr/local/bin "before"
-add_to_path /opt/homebrew/bin "before"
+add_to_path $(brew --prefix)/bin "before"
 add_to_path $HOME/.local/bin "before"
 add_to_path $HOME/bin "before"
-add_to_path /opt/homebrew/opt/sqlite/bin "before"
+add_to_path $(brew --prefix)/opt/sqlite/bin "before"
 
-bindkey -e
 # Prompt for spelling correction of commands.
 #setopt CORRECT
 
@@ -80,8 +80,35 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# Path to your zim installation.
-ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 6
+
+## config
+zstyle ':omz:plugins:eza' 'dirs-first' yes
+zstyle ':omz:plugins:eza' 'icons' yes
+zstyle ':omz:plugins:eza' 'size-prefix' si
+
+zstyle :omz:plugins:iterm2 shell-integration yes
+
+zstyle ':omz:plugins:alias-finder' autoload yes # disabled by default
+zstyle ':omz:plugins:alias-finder' longer yes # disabled by default
+zstyle ':omz:plugins:alias-finder' exact yes # disabled by default
+zstyle ':omz:plugins:alias-finder' cheaper yes # disabled by default
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -89,15 +116,6 @@ ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':zim:update' mode disabled  # disable automatic updates
-zstyle ':zim:update' mode auto # update automatically without asking
-# zstyle ':zim:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':zim:update' frequency 13
-zstyle ':zim:update' frequency 6
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -130,37 +148,26 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-ZIM_CONFIG_FILE=~/.config/zsh/zimrc
-
-## config
-# zstyle ':zim:plugins:eza' 'dirs-first' yes
-# zstyle ':zim:plugins:eza' 'icons' yes
-# zstyle ':zim:plugins:eza' 'size-prefix' si
-zstyle ':zim:git' aliases-prefix 'g'
-
-zstyle :zim:plugins:iterm2 shell-integration yes
-
 # export STARSHIP_CONFIG=~/.config/starship/default.toml
 # export STARSHIP_CONFIG=~/.config/starship/develop.toml
 export STARSHIP_CONFIG=~/.config/starship/playground.toml
 
-# Install missing modules and update ${ZIM_HOME}/init.zsh if missing or outdated.
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
-	source /opt/homebrew/opt/zimfw/share/zimfw.zsh init
-fi
-
-# User configuration
-# zstyle ':zim:plugins:eza' 'dirs-first' yes
-# zstyle ':zim:plugins:eza' 'icons' yes
-# zstyle ':zim:plugins:eza' 'size-prefix' si
-
-zstyle ':zim:plugins:alias-finder' autoload yes        # disabled by default
-zstyle ':zim:plugins:alias-finder' include-longer yes  # disabled by default
-zstyle ':zim:plugins:alias-finder' include-exact yes   # disabled by default
-zstyle ':zim:plugins:alias-finder' include-shorter yes # disabled by default
-
 export MANPATH="/usr/share/man:/usr/local/share/man:/usr/X11/man:/Library/Apple/usr/share/man:$MANPATH"
-export MANPATH="$HOME/man:/opt/homebrew/share/man:$MANPATH"
+export MANPATH="$HOME/man:$(brew --prefix)/share/man:$MANPATH"
+
+# AUTOUPDATE
+# manually call: upgrade_oh_my_zsh_custom
+export UPDATE_ZSH_DAYS=5
+ZSH_CUSTOM_AUTOUPDATE_QUIET=false
+ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=1
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(alias-finder aliases autoupdate copybuffer copyfile copypath dash direnv extract eza fzf git iterm2 jj macos mosh rsync thefuck tldr tt z zsh-autosuggestions zsh-interactive-cd zsh-navigation-tools zsh-syntax-highlighting forgit)
+source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -176,7 +183,7 @@ export VISUAL="$EDITOR"
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 source /Users/philip/.config/op/plugins.sh
-add_to_path "/opt/homebrew/opt/ruby/bin" "before"
+add_to_path "$(brew --prefix)/opt/ruby/bin" "before"
 
 # INANE
 # term app
@@ -197,7 +204,6 @@ if [[ -o interactive ]]; then
 fi
 
 if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
-	source ${ZIM_HOME}/init.zsh
 	# eval "$(clippy completion zsh)"
 	# PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "/Users/philip/Library/Application Support/tea/autocomplete.zsh"
 	export GEMINI_API_KEY="AIzaSyBfcbh4CWayxDJD4WCAzi3DUtJnkAyhe-g"
@@ -206,15 +212,11 @@ fi
 
 [ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.
 
-# inane autoload
-# eval "$(clippy completion zsh)"
-
-if [[ $INANE_SHELL_TYPE -gt 0 ]]; then
-	for f in ~/.oh-my-zsh/custom/*.zsh; do source $f; done
-
-	if [[ $(hostname) = "BlackBetty.local" ]]; then
-		~/Sites/blackbetty/bin/fortune
-	fi
-fi
-
 # export DASHT_DOCSETS_DIR=/Users/philip/Library/Application\ Support/Dash/DocSets/
+
+clean_path
+export PATH
+
+if [[ -f ~/.zshrc.$OPT_SOURCE ]]; then
+	source ~/.zshrc.$OPT_SOURCE
+fi

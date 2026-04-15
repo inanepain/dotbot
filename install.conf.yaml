@@ -5,6 +5,10 @@
           
 - link:
     ~/.zshenv: zshenv
+    ~/.zshrc: zshrc
+    ~/.zshrc.blackbetty:
+      if: '[ `hostname` = BlackBetty.local ]'
+      path: zshrc.blackbetty
     ~/.zlogin: zlogin
     ~/.zlogout: zlogout
 
@@ -23,7 +27,6 @@
 - link:
    ~/.oh-my-zsh/custom/000-env.zsh: ohmyzsh/custom/000-env.zsh
    ~/.oh-my-zsh/custom/002-app.zsh: ohmyzsh/custom/002-app.zsh
-  #  ~/.oh-my-zsh/custom/007-env-bat.zsh.bak: ohmyzsh/custom/007-env-bat.zsh.bak
    ~/.oh-my-zsh/custom/007-env-eza.zsh: ohmyzsh/custom/007-env-eza.zsh
    ~/.oh-my-zsh/custom/010-java.zsh:
      if: '[ ! `hostname` = kycu ]'
@@ -55,11 +58,9 @@
   #    if: '[ ! `hostname` = kycu  ]'
   #    path: ohmyzsh/custom/090-includes.zsh
    ~/.oh-my-zsh/custom/500-colours.zsh: ohmyzsh/custom/500-colours.zsh
-  #  ~/.oh-my-zsh/custom/500-lib-colours.zsh.bak: ohmyzsh/custom/500-lib-colours.zsh.bak
    ~/.oh-my-zsh/custom/900-functions.zsh: ohmyzsh/custom/900-functions.zsh
    ~/.oh-my-zsh/custom/910-completions.zsh: ohmyzsh/custom/910-completions.zsh
    ~/.oh-my-zsh/custom/920-keybindings.zsh: ohmyzsh/custom/920-keybindings.zsh
-  #  ~/.oh-my-zsh/custom/gh-kycdd.zsh.bak : ohmyzsh/custom/gh-kycdd.zsh.bak
 
 - create:
     # XDG
@@ -73,6 +74,7 @@
     - ~/bin/functions
     # OTHER
     - ~/doc
+    - ~/lib
     - ~/etc
     # MAN
     - ~/man
