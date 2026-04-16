@@ -4,7 +4,8 @@ source /Users/philip/.oh-my-zsh/lib/clipboard.zsh
 
 # Alias reminder
 # source "$(brew --prefix)/Cellar/zsh-you-should-use/1.11.0/share/zsh-you-should-use/you-should-use.plugin.zsh"
-source /opt/homebrew/share/zsh-you-should-use/you-should-use.plugin.zsh
+source "$(brew --prefix)/share/zsh-you-should-use/you-should-use.plugin.zsh"
+# source /opt/homebrew/share/zsh-you-should-use/you-should-use.plugin.zsh
 
 # Alias finder
 source /Users/philip/.oh-my-zsh/plugins/aliases/aliases.plugin.zsh

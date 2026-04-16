@@ -29,4 +29,4 @@ alias lm='ll -sdate'
 
 alias ltl='ls --timeline'
 
-unalias lx
+# unalias lx
