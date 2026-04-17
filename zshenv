@@ -1,5 +1,6 @@
 OPT_SOURCE=$(hostname)
 OPT_SOURCE=${OPT_SOURCE/.local/}
+OPT_SOURCE=${OPT_SOURCE/.lan/}
 OPT_SOURCE=${OPT_SOURCE/.net/}
 export OPT_SOURCE=${OPT_SOURCE:l}
 

@@ -166,7 +166,14 @@ ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=1
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(alias-finder aliases autoupdate copybuffer copyfile copypath dash direnv extract eza fzf git iterm2 jj macos mosh rsync thefuck tldr tt z zsh-autosuggestions zsh-interactive-cd zsh-navigation-tools zsh-syntax-highlighting forgit)
+if [[ $OPT_SOURCE = "blackbetty" ]]; then
+	plugins=(alias-finder aliases autoupdate copybuffer copyfile copypath dash direnv extract eza fzf git iterm2 jj macos mosh rsync thefuck tldr tt z zsh-autosuggestions zsh-interactive-cd zsh-navigation-tools zsh-syntax-highlighting forgit)
+elif [[ $OPT_SOURCE = "kycx" ]]; then
+	plugins=(aliases alias-finder copyfile copypath eza fzf git sudo z zsh-interactive-cd zsh-navigation-tools zsh-autosuggestions zsh-syntax-highlighting)
+else
+	plugins=(aliases alias-finder copyfile copypath fzf git sude z)
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -180,9 +187,6 @@ else
 fi
 export VISUAL="$EDITOR"
 
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
-source /Users/philip/.config/op/plugins.sh
 add_to_path "$(brew --prefix)/opt/ruby/bin" "before"
 
 # INANE
@@ -207,16 +211,19 @@ if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
 	# eval "$(clippy completion zsh)"
 	# PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "/Users/philip/Library/Application Support/tea/autocomplete.zsh"
 	export GEMINI_API_KEY="AIzaSyBfcbh4CWayxDJD4WCAzi3DUtJnkAyhe-g"
-	eval "$(intelli-shell init zsh)"
+
+	if which intelli-shell >/dev/null; then
+		eval "$(intelli-shell init zsh)"
+	fi
 fi
 
 [ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.
 
 # export DASHT_DOCSETS_DIR=/Users/philip/Library/Application\ Support/Dash/DocSets/
 
-clean_path
-export PATH
-
 if [[ -f ~/.zshrc.$OPT_SOURCE ]]; then
 	source ~/.zshrc.$OPT_SOURCE
 fi
+
+clean_path
+export PATH

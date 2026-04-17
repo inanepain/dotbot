@@ -6,6 +6,7 @@
 - link:
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
+    ~/.zshrc.kycx: zshrc.kycx
     ~/.zshrc.blackbetty:
       if: '[ `hostname` = BlackBetty.local ]'
       path: zshrc.blackbetty
