@@ -1,0 +1,4 @@
+= dot files
+:description: Sync files between installations.
+
+{description}

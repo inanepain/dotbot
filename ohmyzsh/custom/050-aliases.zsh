@@ -9,10 +9,11 @@
 # directory: named
 #####################################################################
 develop=~/Sites/blackbetty
+developer=~/Developer
 inanefw=~/Sites/inane-fw
 repos=~/Developer/Repositories
 icloud=/Users/philip/Library/Mobile\ Documents/com\~apple\~CloudDocs
-: ~develop ~repos ~icloud ~inanefw
+: ~develop ~developer ~repos ~icloud ~inanefw
 
 ## aliases
 # standard: changing directory

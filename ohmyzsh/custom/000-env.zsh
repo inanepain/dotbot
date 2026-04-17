@@ -19,7 +19,6 @@
 ## OPT_*
 # custom bunch of variables for my own use for this or that...
 #####################################################################
-export OPT_SOURCE="blackbetty"
 export OPT_VERSION="1"
 export OPT_DEBUG=0
 

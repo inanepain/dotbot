@@ -2,12 +2,17 @@
 #		oh-my-zsh - custom: 005: aliases
 # version: 1                 2025 Aug 08
 #############################-###########
-# scp .oh-my-zsh/custom/005-aliases.zsh philip@granny:/Users/philip/.oh-my-zsh/custom/005-aliases.zsh
-#############################-###########
 
 ## command
-# broot
+# ghq
 #####################################################################
-if which broot >/dev/null; then
-    source /Users/philip/.config/broot/launcher/bash/br
+if which ghq >/dev/null; then
+	function ghq-cd() {
+		local repo=$(ghq list | fzf)
+		[ -n "$repo" ] && cd "$(ghq root)/$repo"
+	}
+
+	function ghq-update() {
+		ghq list --full-path | xargs -I{} git -C {} pull --ff-only
+	}
 fi
