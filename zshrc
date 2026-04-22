@@ -49,7 +49,9 @@ function hasSoftware() {
 setopt autocd extendedglob
 unsetopt nomatch
 bindkey -e
-tabs -4
+if which tabs >/dev/null; then
+  tabs -4
+fi
 setopt beep nomatch
 # End of lines configured by zsh-newuser-install
 # If you come from bash you might have to change your $PATH.
