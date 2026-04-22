@@ -179,7 +179,7 @@ if [[ $OPT_SOURCE = "blackbetty" ]]; then
 elif [[ $OPT_SOURCE = "kycx" ]]; then
 	plugins=(aliases alias-finder copyfile copypath eza fzf git sudo z zsh-interactive-cd zsh-navigation-tools zsh-autosuggestions zsh-syntax-highlighting)
 else
-	plugins=(aliases alias-finder copyfile copypath fzf git sudo z)
+	plugins=(aliases alias-finder copyfile copypath fzf git sudo z zsh-syntax-highlighting)
 fi
 
 source $ZSH/oh-my-zsh.sh

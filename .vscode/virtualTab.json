@@ -4,6 +4,7 @@
     "name": "Currently Open Files",
     "files": [
       "zshrc",
+      "zshrc.blackbetty",
       "ohmyzsh/custom/010-java.zsh"
     ],
     "builtIn": true,
