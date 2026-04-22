@@ -57,10 +57,14 @@ add_to_path /usr/local/mysql-9.3.0-macos15-arm64/bin "before"
 add_to_path $HOME/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin "before"
 add_to_path $HOME/.composer/vendor/bin "before"
 add_to_path /usr/local/bin "before"
-add_to_path $(brew --prefix)/bin "before"
+if which brew >/dev/null; then
+  add_to_path $(brew --prefix)/bin "before"
+fi
 add_to_path $HOME/.local/bin "before"
 add_to_path $HOME/bin "before"
-add_to_path $(brew --prefix)/opt/sqlite/bin "before"
+if which brew >/dev/null; then
+  add_to_path $(brew --prefix)/opt/sqlite/bin "before"
+fi
 
 # Prompt for spelling correction of commands.
 #setopt CORRECT
@@ -187,7 +191,9 @@ else
 fi
 export VISUAL="$EDITOR"
 
-add_to_path "$(brew --prefix)/opt/ruby/bin" "before"
+if which brew >/dev/null; then
+  add_to_path "$(brew --prefix)/opt/ruby/bin" "before"
+f
 
 # INANE
 # term app
