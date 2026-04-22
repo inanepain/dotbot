@@ -157,7 +157,9 @@ COMPLETION_WAITING_DOTS="true"
 export STARSHIP_CONFIG=~/.config/starship/playground.toml
 
 export MANPATH="/usr/share/man:/usr/local/share/man:/usr/X11/man:/Library/Apple/usr/share/man:$MANPATH"
-export MANPATH="$HOME/man:$(brew --prefix)/share/man:$MANPATH"
+if which brew >/dev/null; then
+  export MANPATH="$HOME/man:$(brew --prefix)/share/man:$MANPATH"
+fi
 
 # AUTOUPDATE
 # manually call: upgrade_oh_my_zsh_custom
@@ -193,7 +195,7 @@ export VISUAL="$EDITOR"
 
 if which brew >/dev/null; then
   add_to_path "$(brew --prefix)/opt/ruby/bin" "before"
-f
+fi
 
 # INANE
 # term app
