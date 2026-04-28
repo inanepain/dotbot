@@ -175,7 +175,7 @@ ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=1
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [[ $OPT_SOURCE = "blackbetty" ]]; then
-	plugins=(alias-finder aliases autoupdate copybuffer copyfile copypath dash direnv extract eza fzf git iterm2 jj macos mosh rsync thefuck tldr tt z zsh-autosuggestions zsh-interactive-cd zsh-navigation-tools zsh-syntax-highlighting forgit)
+	plugins=(alias-finder aliases autoupdate copybuffer copyfile copypath dash direnv extract eza fzf git iterm2 jj macos mosh rsync thefuck tldr tt z starship zsh-autosuggestions zsh-interactive-cd zsh-navigation-tools zsh-syntax-highlighting forgit)
 elif [[ $OPT_SOURCE = "kycx" ]]; then
 	plugins=(aliases alias-finder copyfile copypath eza fzf git sudo z zsh-interactive-cd zsh-navigation-tools zsh-autosuggestions zsh-syntax-highlighting)
 else
