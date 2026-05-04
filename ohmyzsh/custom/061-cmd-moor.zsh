@@ -5,6 +5,12 @@
 # scp .oh-my-zsh/custom/005-aliases.zsh philip@granny:/Users/philip/.oh-my-zsh/custom/005-aliases.zsh
 #############################-###########
 
+## moor
+#####################################################################
+if which moor >/dev/null; then
+    export PAGER="$(brew --prefix)/bin/moor"
+fi
+
 ## gtrash
 ############
 # export GTRASH_HOME_TRASH_DIR="$HOME/.Trash"

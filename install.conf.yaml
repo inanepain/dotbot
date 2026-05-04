@@ -32,13 +32,14 @@
    ~/.oh-my-zsh/custom/010-java.zsh:
      if: '[ ! `hostname` = kycu ]'
      path: ohmyzsh/custom/010-java.zsh
+
+- link:
    ~/.oh-my-zsh/custom/050-aliases.zsh: ohmyzsh/custom/050-aliases.zsh
-  #  ~/.oh-my-zsh/custom/051-aliases-ls.zsh:
-  #    if: '[ ! `hostname` = kycu ]'
-  #    path: ohmyzsh/custom/051-aliases-ls.zsh
    ~/.oh-my-zsh/custom/051-aliases-php.zsh: ohmyzsh/custom/051-aliases-php.zsh
    ~/.oh-my-zsh/custom/051-aliases-suffix.zsh: ohmyzsh/custom/051-aliases-suffix.zsh
    ~/.oh-my-zsh/custom/052-aliases-git.zsh: ohmyzsh/custom/052-aliases-git.zsh
+
+- link:   
    ~/.oh-my-zsh/custom/060-cmd.zsh: ohmyzsh/custom/060-cmd.zsh
    ~/.oh-my-zsh/custom/061-cmd-atuin.zsh: 
      if: '[ ! `hostname` = kycu  ]'
@@ -50,20 +51,22 @@
    ~/.oh-my-zsh/custom/061-cmd-hurl.zsh: ohmyzsh/custom/061-cmd-hurl.zsh
    ~/.oh-my-zsh/custom/061-cmd-iterm.zsh: ohmyzsh/custom/061-cmd-iterm.zsh
    ~/.oh-my-zsh/custom/061-cmd-lla.zsh: ohmyzsh/custom/061-cmd-lla.zsh
+   ~/.oh-my-zsh/custom/061-cmd-moor.zsh: ohmyzsh/custom/061-cmd-moor.zsh
    ~/.oh-my-zsh/custom/061-cmd-navi.zsh: ohmyzsh/custom/061-cmd-navi.zsh
    ~/.oh-my-zsh/custom/061-cmd-pet.zsh: ohmyzsh/custom/061-cmd-pet.zsh
    ~/.oh-my-zsh/custom/061-cmd-sqlite3.zsh: ohmyzsh/custom/061-cmd-sqlite3.zsh
    ~/.oh-my-zsh/custom/061-cmd-todo.zsh: ohmyzsh/custom/061-cmd-todo.zsh
    ~/.oh-my-zsh/custom/061-cmd-x-cmd.zsh: ohmyzsh/custom/061-cmd-x-cmd.zsh
-  #  ~/.oh-my-zsh/custom/061-cmd-forgit.zsh: ohmyzsh/custom/061-cmd-forgit.zsh
-  #  ~/.oh-my-zsh/custom/090-includes.zsh:
-  #    if: '[ ! `hostname` = kycu  ]'
-  #    path: ohmyzsh/custom/090-includes.zsh
+   
+- link:
    ~/.oh-my-zsh/custom/500-colours.zsh: ohmyzsh/custom/500-colours.zsh
    ~/.oh-my-zsh/custom/900-functions.zsh: ohmyzsh/custom/900-functions.zsh
    ~/.oh-my-zsh/custom/910-completions.zsh: ohmyzsh/custom/910-completions.zsh
    ~/.oh-my-zsh/custom/920-keybindings.zsh: ohmyzsh/custom/920-keybindings.zsh
 
+- link:
+   ~/.oh-my-zsh/custom/950-gh-token.zsh: ohmyzsh/custom/950-gh-token.zsh
+    
 - create:
     # XDG
     - ~/.local

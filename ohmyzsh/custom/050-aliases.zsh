@@ -12,8 +12,10 @@ develop=~/Sites/blackbetty
 developer=~/Developer
 inanefw=~/Sites/inane-fw
 repos=~/Developer/Repositories
+tmp=~/tmp
+temp=~/Temp
 icloud=/Users/philip/Library/Mobile\ Documents/com\~apple\~CloudDocs
-: ~develop ~developer ~repos ~icloud ~inanefw
+: ~develop ~developer ~repos ~icloud ~inanefw ~tmp ~temp
 
 ## aliases
 # standard: changing directory
