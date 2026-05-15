@@ -1,1 +1,4 @@
 .vscode/virtualTab.json
+**/tempCodeRunner*
+*.pui
+*.prj

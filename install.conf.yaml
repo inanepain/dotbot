@@ -4,14 +4,17 @@
       relink: 
           
 - link:
-    ~/.zshenv: zshenv
-    ~/.zshrc: zshrc
-    ~/.zshrc.kycx: zshrc.kycx
+    ~/.zshenv: zsh/zshenv
+    ~/.zprofile: zsh/zprofile
+    ~/.zshrc: zsh/zshrc
+    ~/.zlogin: zsh/zlogin
+    ~/.zlogout: zsh/zlogout
+    ~/.zshrc.kycx:
+      if: '[ `hostname` = kycx.local ]'
+      path: zsh/zshrc.kycx
     ~/.zshrc.blackbetty:
       if: '[ `hostname` = BlackBetty.local ]'
-      path: zshrc.blackbetty
-    ~/.zlogin: zlogin
-    ~/.zlogout: zlogout
+      path: zsh/zshrc.blackbetty
 
 - link:
     ~/bin/fresh-upgrade.zsh: bin/fresh-upgrade.zsh
