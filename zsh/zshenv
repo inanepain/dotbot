@@ -18,13 +18,6 @@ elif [[ -f /opt/homebrew/bin/brew ]]; then
 	export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin
 fi
 
-# INANE
-if [[ -f "$HOME/.inane/init.zsh" ]]; then
-	if [[ -z $INANE ]]; then
-		eval "$(cat $HOME/.inane/init.zsh)"
-	fi
-fi
-
 # FUNCTION AUTOLOADING
 fpath=(~/bin/functions $fpath)
 autoload ${fpath[1]}/*(:t)

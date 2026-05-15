@@ -19,21 +19,21 @@ function add_to_path() {
 
 # Clean PATH in-place
 function clean_path() {
-  emulate -L zsh
-  setopt extendedglob
+	emulate -L zsh
+	setopt extendedglob
 
-  typeset -a newpath
-  typeset -A seen
+	typeset -a newpath
+	typeset -A seen
 
-  local p
-  for p in ${(s/:/)PATH}; do
-    # skip empty, non-dirs, or already seen
-    [[ -n "$p" && -d "$p" && -z "${seen[$p]}" ]] || continue
-    newpath+="$p"
-    seen[$p]=1
-  done
+	local p
+	for p in ${(s/:/)PATH}; do
+		# skip empty, non-dirs, or already seen
+		[[ -n "$p" && -d "$p" && -z "${seen[$p]}" ]] || continue
+		newpath+="$p"
+		seen[$p]=1
+	done
 
-  PATH="${(j/:/)newpath}"
+	PATH="${(j/:/)newpath}"
 }
 
 function hasSoftware() {
@@ -50,7 +50,7 @@ setopt autocd extendedglob
 unsetopt nomatch
 bindkey -e
 if which tabs >/dev/null; then
-  tabs -4
+	tabs -4
 fi
 setopt beep nomatch
 # End of lines configured by zsh-newuser-install
@@ -60,12 +60,12 @@ add_to_path $HOME/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/b
 add_to_path $HOME/.composer/vendor/bin "before"
 add_to_path /usr/local/bin "before"
 if which brew >/dev/null; then
-  add_to_path $(brew --prefix)/bin "before"
+	add_to_path $(brew --prefix)/bin "before"
 fi
 add_to_path $HOME/.local/bin "before"
 add_to_path $HOME/bin "before"
 if which brew >/dev/null; then
-  add_to_path $(brew --prefix)/opt/sqlite/bin "before"
+	add_to_path $(brew --prefix)/opt/sqlite/bin "before"
 fi
 
 # Prompt for spelling correction of commands.
@@ -97,7 +97,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -105,6 +105,8 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 6
 
 ## config
+zstyle ':inane:*' editor fresh
+
 zstyle ':omz:plugins:eza' 'dirs-first' yes
 zstyle ':omz:plugins:eza' 'icons' yes
 zstyle ':omz:plugins:eza' 'size-prefix' si
@@ -112,9 +114,9 @@ zstyle ':omz:plugins:eza' 'size-prefix' si
 zstyle :omz:plugins:iterm2 shell-integration yes
 
 zstyle ':omz:plugins:alias-finder' autoload yes # disabled by default
-zstyle ':omz:plugins:alias-finder' longer yes # disabled by default
-zstyle ':omz:plugins:alias-finder' exact yes # disabled by default
-zstyle ':omz:plugins:alias-finder' cheaper yes # disabled by default
+zstyle ':omz:plugins:alias-finder' longer yes   # disabled by default
+zstyle ':omz:plugins:alias-finder' exact yes    # disabled by default
+zstyle ':omz:plugins:alias-finder' cheaper yes  # disabled by default
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -160,7 +162,7 @@ export STARSHIP_CONFIG=~/.config/starship/playground.toml
 
 export MANPATH="/usr/share/man:/usr/local/share/man:/usr/X11/man:/Library/Apple/usr/share/man:$MANPATH"
 if which brew >/dev/null; then
-  export MANPATH="$HOME/man:$(brew --prefix)/share/man:$MANPATH"
+	export MANPATH="$HOME/man:$(brew --prefix)/share/man:$MANPATH"
 fi
 
 # AUTOUPDATE
@@ -168,6 +170,12 @@ fi
 export UPDATE_ZSH_DAYS=5
 ZSH_CUSTOM_AUTOUPDATE_QUIET=false
 ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=1
+
+# INANE
+if [[ -f "$HOME/.inane/init.zsh" ]]; then
+	eval "$(cat $HOME/.inane/init.zsh)"
+	# source $HOME/.inane/init.zsh
+fi
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -196,7 +204,7 @@ fi
 export VISUAL="$EDITOR"
 
 if which brew >/dev/null; then
-  add_to_path "$(brew --prefix)/opt/ruby/bin" "before"
+	add_to_path "$(brew --prefix)/opt/ruby/bin" "before"
 fi
 
 # INANE
