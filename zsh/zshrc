@@ -61,6 +61,7 @@ add_to_path $HOME/.composer/vendor/bin "before"
 add_to_path /usr/local/bin "before"
 if which brew >/dev/null; then
 	add_to_path $(brew --prefix)/bin "before"
+	add_to_path $(brew --prefix)/sbin "before"
 fi
 add_to_path $HOME/.local/bin "before"
 add_to_path $HOME/bin "before"
