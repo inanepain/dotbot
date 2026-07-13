@@ -1,4 +1,4 @@
-OPT_SOURCE=$(hostname)
+OPT_SOURCE=$(uname -n)
 OPT_SOURCE=${OPT_SOURCE/.local/}
 OPT_SOURCE=${OPT_SOURCE/.lan/}
 OPT_SOURCE=${OPT_SOURCE/.net/}
