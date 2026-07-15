@@ -1,7 +1,7 @@
 - defaults:
     link:
       create: true
-      relink: 
+      relink: true
 
 #region CREATE
 # XDG
@@ -44,9 +44,18 @@
 #region ZSH
 # ZSH: CONFIG
 - link:
-   ~/.zsh.d/blackbetty.zshrc:
+   ~/.zsh.d/blackbetty.zsh:
       if: '[ `hostname` = BlackBetty.local ]'
       path: home/zsh.d/blackbetty.zsh
+   ~/.zsh.d/blackbetty.zshrc:
+      if: '[ `hostname` = BlackBetty.local ]'
+      path: home/zsh.d/blackbetty.zshrc
+   ~/.zsh.d/kycx.zsh:
+      if: '[ `hostname` = kycx ]'
+      path: home/zsh.d/kycx.zsh
+   ~/.zsh.d/kycx.zshrc:
+      if: '[ `hostname` = kycx ]'
+      path: home/zsh.d/kycx.zshrc
 
 # ZSH: CORE
 - link:
@@ -55,12 +64,6 @@
     ~/.zshrc: zsh/zshrc
     ~/.zlogin: zsh/zlogin
     ~/.zlogout: zsh/zlogout
-    ~/.zshrc.kycx:
-      if: '[ `hostname` = kycx.local ]'
-      path: zsh/zshrc.kycx
-    ~/.zshrc.blackbetty:
-      if: '[ `hostname` = BlackBetty.local ]'
-      path: zsh/zshrc.blackbetty
 
 # ZSH: BIN
 - link:
@@ -122,6 +125,15 @@
 #region CONFIG
 # CONFIG: ZSH-PATINA
 - link:
+    ~/.config/atuin:
+        glob: true
+        path: home/config/atuin/*
+    ~/.config/direnv:
+        glob: true
+        path: home/config/direnv/*
+    ~/.config/starship:
+        glob: true
+        path: home/config/starship/*
     ~/.config/zsh-patina:
         glob: true
         path: home/config/zsh-patina/*

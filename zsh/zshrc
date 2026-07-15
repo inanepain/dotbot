@@ -194,9 +194,10 @@ plugins+=($plugins aliases alias-finder copyfile copypath fzf git sudo z)
 # zsh-syntax-highlighting
 if [[ $OPT_SOURCE = "kycx" ]]; then
 	plugins+=($plugins eza zsh-interactive-cd zsh-navigation-tools zsh-autosuggestions zsh-syntax-highlighting)
-else
-	plugins+=($plugins zsh-syntax-highlighting)
 fi
+# else
+# 	plugins+=($plugins zsh-syntax-highlighting)
+# fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -249,9 +250,13 @@ fi
 
 # export DASHT_DOCSETS_DIR=/Users/philip/Library/Application\ Support/Dash/DocSets/
 
-if [[ -f ~/.zshrc.$OPT_SOURCE ]]; then
-	source ~/.zshrc.$OPT_SOURCE
+##################################################
+########## custom end includes
+##################################################
+if [[ -f ~/.zsh.d/$OPT_SOURCE.zshrc ]]; then
+	source ~/.zsh.d/$OPT_SOURCE.zshrc
 fi
+##################################################
 
 clean_path
 export PATH
