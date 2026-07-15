@@ -181,7 +181,6 @@ ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=1
 # INANE
 if [[ -f "$HOME/.inane/init.zsh" ]]; then
 	eval "$(cat $HOME/.inane/init.zsh)"
-	# source $HOME/.inane/init.zsh
 fi
 
 # Which plugins would you like to load?
@@ -189,16 +188,9 @@ fi
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins+=($plugins aliases alias-finder copyfile copypath fzf git sudo z)
 
 # zsh-syntax-highlighting
-if [[ $OPT_SOURCE = "kycx" ]]; then
-	plugins+=($plugins eza zsh-interactive-cd zsh-navigation-tools zsh-autosuggestions zsh-syntax-highlighting)
-fi
-# else
-# 	plugins+=($plugins zsh-syntax-highlighting)
-# fi
-
+plugins+=($plugins aliases alias-finder copyfile copypath fzf git sudo z)
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
