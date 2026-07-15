@@ -2,7 +2,53 @@
     link:
       create: true
       relink: 
-          
+
+#region CREATE
+# XDG
+- create:
+    - ~/.local
+    - ~/.local/share
+    - ~/.local/state
+    - ~/.config
+    - ~/.cache
+
+# ZSH
+- create:
+    - ~/.zsh.d
+
+# BIN
+- create:
+    - ~/bin
+    - ~/bin/functions
+
+# OTHER
+- create:
+    - ~/doc
+    - ~/lib
+    - ~/etc
+    - ~/etc/oh-my-zsh
+
+# MAN
+- create:
+    - ~/man
+    - ~/man/man1
+    - ~/man/man2
+    - ~/man/man3
+    - ~/man/man4
+    - ~/man/man5
+    - ~/man/man6
+    - ~/man/man7
+    - ~/man/man8
+#endregion CREATE
+
+#region ZSH
+# ZSH: CONFIG
+- link:
+   ~/.zsh.d/blackbetty.zshrc:
+      if: '[ `hostname` = BlackBetty.local ]'
+      path: home/zsh.d/blackbetty.zsh
+
+# ZSH: CORE
 - link:
     ~/.zshenv: zsh/zshenv
     ~/.zprofile: zsh/zprofile
@@ -16,18 +62,19 @@
       if: '[ `hostname` = BlackBetty.local ]'
       path: zsh/zshrc.blackbetty
 
+# ZSH: BIN
 - link:
-    ~/bin/fresh-upgrade.zsh: bin/fresh-upgrade.zsh
-              
-- link:
-    ~/bin/functions/ask: bin/functions/ask
-    ~/bin/functions/colours: bin/functions/colours
-    ~/bin/functions/eg: bin/functions/eg
-    ~/bin/functions/inane-x: bin/functions/inane-x
-    ~/bin/functions/swap_files: bin/functions/swap_files
-    ~/bin/functions/take: bin/functions/take
-    ~/bin/functions/which2: bin/functions/which2
+    ~/bin/fresh-upgrade.zsh: home/bin/fresh-upgrade.zsh
 
+# ZSH: BIN: FUNCTIONS
+- link:
+   ~/bin/functions/:
+    glob: true
+    path: home/bin/functions/*
+#endregion ZSH
+
+#region OHMYZSH
+# OH-MY-ZSH
 - link:
    ~/.oh-my-zsh/custom/000-env.zsh: ohmyzsh/custom/000-env.zsh
    ~/.oh-my-zsh/custom/002-app.zsh: ohmyzsh/custom/002-app.zsh
@@ -60,7 +107,8 @@
    ~/.oh-my-zsh/custom/061-cmd-sqlite3.zsh: ohmyzsh/custom/061-cmd-sqlite3.zsh
    ~/.oh-my-zsh/custom/061-cmd-todo.zsh: ohmyzsh/custom/061-cmd-todo.zsh
    ~/.oh-my-zsh/custom/061-cmd-x-cmd.zsh: ohmyzsh/custom/061-cmd-x-cmd.zsh
-   
+   ~/.oh-my-zsh/custom/061-cmd-zsh-patina.zsh: ohmyzsh/custom/061-cmd-zsh-patina.zsh
+
 - link:
    ~/.oh-my-zsh/custom/500-colours.zsh: ohmyzsh/custom/500-colours.zsh
    ~/.oh-my-zsh/custom/900-functions.zsh: ohmyzsh/custom/900-functions.zsh
@@ -69,33 +117,20 @@
 
 - link:
    ~/.oh-my-zsh/custom/950-gh-token.zsh: ohmyzsh/custom/950-gh-token.zsh
-   
+#endregion OHMYZSH
+
+#region CONFIG
+# CONFIG: ZSH-PATINA
+- link:
+    ~/.config/zsh-patina:
+        glob: true
+        path: home/config/zsh-patina/*
+#endregion CONFIG
+
 - link:
    ~/.netrc: home/netrc
-    
-- create:
-    # XDG
-    - ~/.local
-    - ~/.local/share
-    - ~/.local/state
-    - ~/.config
-    - ~/.cache
-    # BIN
-    - ~/bin
-    - ~/bin/functions
-    # OTHER
-    - ~/doc
-    - ~/lib
-    - ~/etc
-    # MAN
-    - ~/man
-    - ~/man/man1
-    - ~/man/man2
-    - ~/man/man3
-    - ~/man/man4
-    - ~/man/man5
-    - ~/man/man6
-    - ~/man/man7
-    - ~/man/man8
+   
+- link:
+   ~/etc/mysql/my.cnf: home/etc/mysql/my.cnf
 
-- clean: ['~', '~/bin/functions', '~/.oh-my-zsh/custom']
+- clean: ['~', '~/bin/functions', '~/.oh-my-zsh/custom', '~/.zsh.d']

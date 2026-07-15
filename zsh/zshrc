@@ -65,6 +65,16 @@ if which brew >/dev/null; then
 	add_to_path $(brew --prefix)/opt/sqlite/bin "before"
 fi
 
+##################################################
+########## initialise config variables
+##################################################
+plugins=()
+##################################################
+if [[ -f ~/.zsh.d/$OPT_SOURCE.zsh ]]; then
+	source ~/.zsh.d/$OPT_SOURCE.zsh
+fi
+##################################################
+
 # Prompt for spelling correction of commands.
 #setopt CORRECT
 
@@ -179,12 +189,13 @@ fi
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-if [[ $OPT_SOURCE = "blackbetty" ]]; then
-	plugins=(alias-finder aliases autoupdate brew copybuffer copyfile copypath dash direnv extract eza fzf git iterm2 jj macos mosh rsync thefuck tldr tt z starship zsh-autosuggestions zsh-interactive-cd zsh-navigation-tools zsh-syntax-highlighting forgit)
-elif [[ $OPT_SOURCE = "kycx" ]]; then
-	plugins=(aliases alias-finder copyfile copypath eza fzf git sudo z zsh-interactive-cd zsh-navigation-tools zsh-autosuggestions zsh-syntax-highlighting)
+plugins+=($plugins aliases alias-finder copyfile copypath fzf git sudo z)
+
+# zsh-syntax-highlighting
+if [[ $OPT_SOURCE = "kycx" ]]; then
+	plugins+=($plugins eza zsh-interactive-cd zsh-navigation-tools zsh-autosuggestions zsh-syntax-highlighting)
 else
-	plugins=(aliases alias-finder copyfile copypath fzf git sudo z zsh-syntax-highlighting)
+	plugins+=($plugins zsh-syntax-highlighting)
 fi
 
 source $ZSH/oh-my-zsh.sh

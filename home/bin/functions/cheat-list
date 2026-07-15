@@ -1,0 +1,2 @@
+# gets list of cheats for tab completion
+reply=($(\ls -R1 ~/Documents/CyberSpace/Cheat | grep -v / | sort | uniq))

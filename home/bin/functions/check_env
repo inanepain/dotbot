@@ -1,0 +1,18 @@
+## check_env
+# check a list of names and logs those that are not valid variables
+
+# e.g.: check_env BOB Sam PATH KING
+# BOB is missing
+# Sam is missing
+# KING is missing
+
+# check_env() { local ret=0; for var in "$@"; do [[ -v $var ]] || { echo "$var is missing"; ret=1; }; done; return $ret; }
+
+local ret=0
+for var in "$@"; do
+    [[ -v $var ]] || {
+        echo "$var is missing"
+        ret=1
+    }
+done
+return $ret

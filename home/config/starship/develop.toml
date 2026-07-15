@@ -1,0 +1,101 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+# A continuation prompt that displays two filled in arrows
+continuation_prompt = "[∙](bright-blue) "
+
+# A minimal left prompt
+# format = """$directory\
+# $git_branch\
+# $git_status
+# $character"""
+
+format = """
+[$time$memory_usage$jobs$directory$git_branch$git_status](bold dimmed purple)
+$sudo$env_var$character"""
+
+# move the rest of the prompt to the right
+right_format = """[$cmd_duration$php$battery$status](bold dimmed purple)"""
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+format = '\[[$symbol$percentage]($style)\]'
+
+[[battery.display]] # "bold red" style and discharging_symbol when capacity is between 0% and 10%
+threshold = 10
+style = "bold red"
+
+[[battery.display]] # "bold yellow" style and 💦 symbol when capacity is between 10% and 30%
+threshold = 30
+style = "bold yellow"
+discharging_symbol = "💦"
+
+[[battery.display]] # "bold red" style and discharging_symbol when capacity is between 0% and 10%
+threshold = 100
+style = "bold green"
+# when capacity is over 30%, the battery indicator will not be displayed
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character] # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+[cmd_duration]
+min_time = 500
+format = '\[[⏱ $duration]($style)\]'
+
+[directory]
+style = "cyan"
+truncation_symbol = "…/"
+# truncation_length = 3
+home_symbol = "🏠"
+format = '(\[[$path]($style)[$read_only]($read_only_style)\])'
+
+[env_var.SIUID]
+style = "purple"
+format = '\[[$env_value]($style)\]'
+default = "unknown user"
+
+[git_branch]
+format = '\[[$symbol$branch]($style)\]'
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[package]
+disabled = true
+
+[memory_usage]
+disabled = false
+threshold = -1
+# symbol = " "
+style = "bold dimmed green"
+format = '\[$symbol[[$ram_pct](bold dimmed blue)([|](dimmed red)[$swap_pct](bold dimmed yellow))]($style)\]'
+
+[php]
+version_format = "v${raw}"
+symbol = "🐘 "
+format = '\[[$symbol($version)]($style)\]'
+
+[shell]
+# disabled = false
+format = '\[[$indicator]($style)\]'
+
+[status]
+disabled = false
+format = '\[[$symbol$status]($style)\]'
+
+[sudo]
+disabled = false
+style = 'bold green'
+symbol = '🫆 '
+# symbol = '👩‍💻 '
+
+[time]
+disabled = false
+style = "bold dimmed blue"
+format = '\[[$time]($style)\]'

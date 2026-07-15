@@ -1,0 +1,4 @@
+##################################################
+## zsh: config
+##################################################
+plugins+=($plugins autoupdate brew copybuffer dash direnv extract eza forgit iterm2 jj macos mosh rsync starship thefuck tldr tt zsh-autosuggestions zsh-interactive-cd zsh-navigation-tools)

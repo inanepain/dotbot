@@ -1,0 +1,122 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Use custom format
+# [┌─[Playground](purple)─$time─>](bold green)
+format = """
+[┌─[$hostname](purple)─$time─❖](bold green)
+[│](bold green)$memory_usage$jobs$directory$git_branch$git_status
+[└─](bold green)$sudo$character """
+# [└─>](bold green) """
+
+right_format = """$cmd_duration$php$nodejs$direnv$battery$status"""
+
+[battery]
+# symbols = "󰂎💀💧🫗🔋🪫🔌💡🔦🪔⌛️⏳📈📉➕➖⌁💦☇▼▽⚡︎☠︎⏚⇣↓"
+full_symbol = "🔋 "
+empty_symbol = "🪫 "
+charging_symbol = "⚡️ "
+discharging_symbol = "⚡︎ "
+format = '([\[$symbol$percentage\]]($style))'
+
+[[battery.display]] # style when capacity is between 0% and 10%
+threshold = 10
+style = "bold red"
+discharging_symbol = "💀 "
+
+[[battery.display]] # style when capacity is between 10% and 20%
+threshold = 30
+style = "bold yellow"
+discharging_symbol = "🧊 "
+
+[[battery.display]] # style when capacity is between 20% and 30%
+threshold = 30
+style = "bold yellow"
+discharging_symbol = "💧 "
+
+[[battery.display]] # style when capacity is between 30% and 80%
+threshold = 80
+style = "default"
+
+[[battery.display]] # style when capacity is 100%
+threshold = 100
+style = "bold purple"
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character] # The name of the module we are configuring is "character"
+format = '$symbol'
+success_symbol = "[❯](bold green)" # The "success_symbol" segment is being set to "➜" with the colour "bold green"
+# success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the colour "bold green"
+
+[cmd_duration]
+min_time = 500
+format = '\[[⏱ $duration]($style)\]'
+
+[directory]
+style = "cyan"
+format = '[$path]($style)[$read_only]($read_only_style)'
+
+[direnv]
+# symbols: ⌂🗂️📂📁
+disabled = false
+symbol = "📁 "
+allowed_msg = "✔︎"
+loaded_msg = "✔︎"
+style = "bold bright-yellow"
+format = '([\[$symbol($loaded/$allowed)\]]($style))'
+
+[git_branch]
+symbol = ""
+# format = '([\[$symbol$branch\]]($style))'
+format = '([\($symbol$branch\)]($style))'
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[hostname]
+ssh_only = false
+# format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
+format = '[$ssh_symbol](bold blue)[$hostname](bright-purple)'
+# trim_at = '.companyname.com'
+disabled = false
+
+[package]
+disabled = true
+
+[memory_usage]
+disabled = false
+threshold = -1
+style = "bold green"
+format = '([\[$symbol${ram_pct}( | ${swap_pct})\]]($style))'
+
+[nodejs]
+format = '([\[$symbol($version)\]]($style))'
+
+[php]
+version_format = "v${raw}"
+symbol = "🐘 "
+format = '([\[$symbol($version)\]]($style))'
+
+[shell]
+# disabled = false
+format = '\[[$indicator]($style)\]'
+
+[status]
+disabled = false
+format = '[$symbol$status]($style)'
+
+[sudo]
+disabled = false
+symbol = '🫆'
+format = '[$symbol]($style)'
+# style = 'bold blue'
+# symbol = '👩‍💻 '
+
+[time]
+disabled = false
+# style = "bright-blue"
+style = "bold cyan"
+format = '([\[$time\]]($style))'

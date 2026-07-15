@@ -1,0 +1,7 @@
+[global]
+# skip_dotenv = true
+load_dotenv = false
+
+[whitelist]
+exact = ["/Users/philip/Sites/inane/.envrc", "/Users/philip/Sites/inane-fw/.envrc"]
+prefix = ["/Users/philip/Sites/inane-fw/inanepain"]

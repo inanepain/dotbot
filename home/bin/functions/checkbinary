@@ -1,0 +1,18 @@
+# usage: checkbinary binary brew_package
+if [[ ! -f "$(which $1)" ]]; then
+	echo "$1: Not found."
+
+	if ask "Do you want to install it with Homebrew?" Y; then
+		brew install $2
+	
+		if [[ ! -f "$(which $1)" ]]; then
+			echo "Error: $1 still not found in path."
+			exit 1
+		else
+			echo "Success: $1 found, continuing..."
+		fi
+	else
+		echo "Halting script: Missing $1"
+		exit 1
+	fi
+fi

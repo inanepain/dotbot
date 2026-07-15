@@ -1,0 +1,28 @@
+#### ENVIRONMENT VARIABLES
+##############################################
+# check_env ENV_DIR_QUIET ENV_DIR_DEBUG ENV_DIR_AUTO_CLEAN ENV_DIR_DUMP PRJ_NAME PRJ_WEBROOT
+
+##############################################
+## ENV_DIR_AUTO_CLEAN
+# when enabled (true) files cleaned without prompt
+# default: false
+# used with `clean-files-osx`
+export ENV_DIR_AUTO_CLEAN=true
+
+## ENV_DIR_DEBUG
+# when enabled (true) shows debug messages
+# default: false
+# used with `logging`
+
+## ENV_DIR_QUIET
+# when enabled (true) hides all output
+# default: false
+# used with `logging`
+
+#### CONFIGURATION
+##############################################
+export ENV_DIR_DUMP=`realpath ~/.config/direnv/dump`
+
+#### OTHER
+##############################################
+header "RC:CONFIG:DIRENV"

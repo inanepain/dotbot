@@ -1,0 +1,24 @@
+## random_number
+# random number
+# local VERSION=1
+
+## HISTORY
+# 1: 2021 Nov 27
+# - initial
+
+# gnu utils also has the shuf command
+# shuf -i 1-5 -n1
+
+local thisScript=$(basename $0)
+
+if [[ $# -eq 1 ]]; then
+    local Y=$(($1+1))
+    local R=$(($RANDOM%Y))
+    echo $R
+elif [[ $# -eq 2 ]]; then
+    local DIFF=$(($2-$1+1))
+    local R=$(($(($RANDOM%$DIFF))+$1))
+    echo $R
+else
+    echo "usage: $thisScript X [Y]"
+fi
