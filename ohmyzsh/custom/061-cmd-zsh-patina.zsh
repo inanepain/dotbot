@@ -6,6 +6,10 @@
 ## command
 # zsh-patina
 #####################################################################
-if [[ -f $(brew --prefix)/opt/zsh-patina/bin/zsh-patina ]]; then
-	eval "$($(brew --prefix)/opt/zsh-patina/bin/zsh-patina activate)"
+if which brew >/dev/null; then
+	if [[ -f $(brew --prefix)/opt/zsh-patina/bin/zsh-patina ]]; then
+		eval "$($(brew --prefix)/opt/zsh-patina/bin/zsh-patina activate)"
+	fi
+elif [[ -f ~/.cargo/bin/zsh-patina ]]; then
+	eval "$(~/.cargo/bin/zsh-patina activate)"
 fi

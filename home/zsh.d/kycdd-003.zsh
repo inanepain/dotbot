@@ -1,4 +1,6 @@
 ##################################################
 ## zsh: config
 ##################################################
-plugins+=($plugins autoupdate brew composer copybuffer dash direnv extract eza forgit iterm2 jj macos mosh rsync starship thefuck tldr tt zsh-autosuggestions zsh-interactive-cd zsh-navigation-tools)
+plugins+=($plugins autoupdate forgit starship zsh-interactive-cd zsh-navigation-tools zsh-autosuggestions)
+
+add_to_path $HOME/.cargo/bin

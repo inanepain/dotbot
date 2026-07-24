@@ -65,6 +65,8 @@ if which brew >/dev/null; then
 	add_to_path $(brew --prefix)/opt/sqlite/bin "before"
 fi
 
+add_to_path $HOME/.cargo/bin
+
 ##################################################
 ########## initialise config variables
 ##################################################
@@ -203,6 +205,9 @@ else
 	export EDITOR=code
 fi
 export VISUAL="$EDITOR"
+
+# Compilation flags
+export ARCHFLAGS="-arch $(uname -m)"
 
 if which brew >/dev/null; then
 	add_to_path "$(brew --prefix)/opt/ruby/bin" "before"
