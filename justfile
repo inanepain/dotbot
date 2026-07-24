@@ -1,5 +1,11 @@
 #!/usr/bin/env just --justfile
 
+##################################################
+##################################################
+########## JUST HELPER: Handle OMZ plugins
+##################################################
+##################################################
+
 # dotfiles
 # version: $Id$
 # date: $Date$
@@ -13,57 +19,82 @@ _default:
     @echo "$PROJECT:"
     @just --list --list-heading ''
 
+#region UTILITIES
 # start
 _start task='':
-    echo "{{GREEN}}start{{NORMAL}}: {{task}}"
+    @echo "{{YELLOW}}start{{NORMAL}}: {{task}}"
 
 # done
 _done task='':
-    echo "{{GREEN}}done{{NORMAL}} {{task}}"
+    @echo "{{RED}}done{{NORMAL}} {{task}}"
+
+# notice
+[arg('target', pattern='[a-zA-Z]+[a-zA-Z0-9-_]+', help="Package or recourse being acted upon.")]
+[arg('suffix', pattern='[a-zA-Z]+', help="Action state modifier.")]
+[arg('action', pattern='[a-zA-Z]+', help="Base action work.")]
+_notice target suffix='ing' action='Install':
+    @echo "\t{{CYAN}}{{action}}{{suffix}}: {{BLUE}}{{target}}{{NORMAL}}"
+
+#endregion UTILITIES
 
 #region OH MY ZSH PLUGINS
-# clone plugin: autoupdate
+# plugin clone: default plugins: autoupdate, forgit, autosuggestions
+[group: 'oh-my-zsh plugins']
+omz-clone-default: (_start "OMZ: plugin: default") omz-clone-autoupdate omz-clone-forgit omz-clone-autosuggestions && (_done "OMZ: plugin: default")
+
+####################################################################################################
+
+# plugin clone: autoupdate
 [group: 'oh-my-zsh plugins']
 omz-clone-autoupdate: (_start "OMZ: plugin: autoupdate") && (_done "OMZ: plugin: autoupdate")
     #!/usr/bin/env zsh
     if [[ ! -d ~/.oh-my-zsh/custom/plugins/autoupdate ]]; then
-    git clone https://github.com/tamcore/autoupdate-oh-my-zsh-plugins ~/.oh-my-zsh/custom/plugins/autoupdate
+        just _notice autoupdate
+        git clone https://github.com/tamcore/autoupdate-oh-my-zsh-plugins ~/.oh-my-zsh/custom/plugins/autoupdate
     else
-    echo "\t{{BLUE}}installed: autoupdate"
+        just _notice autoupdate ed
     fi
 
-# clone plugin: forgit
+# plugin clone: forgit
 [group: 'oh-my-zsh plugins']
 omz-clone-forgit: (_start "OMZ: plugin: forgit") && (_done "OMZ: plugin: forgit")
     #!/usr/bin/env zsh
     if [[ ! -d ~/.oh-my-zsh/custom/plugins/forgit ]]; then
-    git clone https://github.com/wfxr/forgit ~/.oh-my-zsh/custom/plugins/forgit
+        just _notice forgit
+        git clone https://github.com/wfxr/forgit ~/.oh-my-zsh/custom/plugins/forgit
     else
-    echo "\t{{BLUE}}installed: forgit"
+        just _notice forgit ed
     fi
 
-# clone plugin: forgit
+# plugin clone: autosuggestions
 [group: 'oh-my-zsh plugins']
-omz-clone-autosuggestions: (_start "OMZ: plugin: zsh-autosuggestions") && (_done "OMZ: plugin: zsh-autosuggestions")
+omz-clone-autosuggestions: (_start "OMZ: plugin: autosuggestions") && (_done "OMZ: plugin: autosuggestions")
     #!/usr/bin/env zsh
     if [[ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]]; then
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        just _notice autosuggestions
+        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     else
-    echo "\t{{BLUE}}installed: zsh-autosuggestions"
+        just _notice autosuggestions ed
     fi
 
-# clone plugin: zsh-syntax-highlighting
+# plugin clone: syntax-highlighting
 [group: 'oh-my-zsh plugins']
-omz-clone-syntax-highlighting: (_start "OMZ: plugin: zsh-syntax-highlighting") && (_done "OMZ: plugin: zsh-syntax-highlighting")
+omz-clone-syntax-highlighting: (_start "OMZ: plugin: syntax-highlighting") && (_done "OMZ: plugin: syntax-highlighting")
     #!/usr/bin/env zsh
     if [[ ! -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]]; then
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        just _notice syntax-highlighting
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     else
-    echo "\t{{BLUE}}installed: zsh-syntax-highlighting"
+        just _notice syntax-highlighting ed
     fi
 
-# clone plugin: all
+####################################################################################################
+
+# plugin update
 [group: 'oh-my-zsh plugins']
-omz-clone-all: (_start "OMZ: plugin: all") omz-clone-autoupdate omz-clone-forgit omz-clone-autosuggestions omz-clone-syntax-highlighting && (_done "OMZ: plugin: zsh-syntax-highlighting")
+omz-update-plugins: (_start "OMZ: plugins: updating...") && (_done "OMZ: plugins: updated")
+    #!/usr/bin/env zsh
+    cd ~/.oh-my-zsh/custom/plugins
+    for f in */.git/config; do echo "\t$(dirname $(dirname $f))"; cd $(dirname $f); cd ..; git pull; cd ..; done
 
 #endregion OH MY ZSH PLUGINS
