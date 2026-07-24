@@ -9,3 +9,7 @@
 - forgit
 - zsh-autosuggestions
 - zsh-syntax-highlighting (deprecated: use zsh-patina)
+
+=== zsh-patina
+
+Installed using `brew` on a Mac or `cargo` on linux or wsl.
