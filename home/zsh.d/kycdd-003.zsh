@@ -3,4 +3,3 @@
 ##################################################
 plugins+=($plugins autoupdate forgit starship zsh-interactive-cd zsh-navigation-tools zsh-autosuggestions)
 
-add_to_path $HOME/.cargo/bin
