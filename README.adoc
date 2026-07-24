@@ -2,3 +2,10 @@
 :description: Sync files between installations.
 
 {description}
+
+== oh-my-zsh: plugins
+
+- autoupdate
+- forgit
+- zsh-autosuggestions
+- zsh-syntax-highlighting
