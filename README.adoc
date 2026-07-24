@@ -8,4 +8,4 @@
 - autoupdate
 - forgit
 - zsh-autosuggestions
-- zsh-syntax-highlighting
+- zsh-syntax-highlighting (deprecated: use zsh-patina)
